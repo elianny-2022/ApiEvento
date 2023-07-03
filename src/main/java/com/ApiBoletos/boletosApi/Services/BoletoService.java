@@ -22,7 +22,10 @@ public class BoletoService {
     public void saveBoleto(Boleto boleto){
         boletoRepository.save(boleto);
     }
-
+   /*  public int obtenerCantidadBoletosDisponibles(String asiento) {
+        return boletoRepository.obtenerCantidadBoletosDisponiblesPorAsiento(asiento);
+    }
+ */
     public Boleto findById(Long id){
         return boletoRepository.findById(id).get();
     }

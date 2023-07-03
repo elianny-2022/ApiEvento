@@ -1,31 +1,37 @@
 package com.ApiBoletos.boletosApi.Models;
 
 import java.sql.Date;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Evento")
-public class Evento {
+public class Evento { 
     
     @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long eventoId;
      private String nombreEvento;
      private String tipoEvento;
+     private String descripcion;
      private Date fecha;
      private String ubicacion;
-     private Double asientoDisponible;
 
+     //Relacion con evento
+     @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, orphanRemoval = true)
+     private List<Boleto> boletos = new ArrayList<>();
+    
+  
 
-     public Evento(String nombreEvento, String tipoEvento, 
-     Date fecha, String ubicacion, Double asientoDisponible){
+     public Evento(String nombreEvento, Date fecha, String ubicacion, String tipoEvento, String descripcion ){
 
         this.nombreEvento = nombreEvento;
+        this.descripcion = descripcion;
         this.tipoEvento = tipoEvento;
         this.fecha = fecha;
-        this.asientoDisponible = asientoDisponible;
         this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
      }
      public Evento(){
 
@@ -46,7 +52,7 @@ public class Evento {
         return nombreEvento;
     }
 
-     public void setTipoEvento(String tipoEvento){
+    public void setTipoEvento(String tipoEvento){
         this.tipoEvento = tipoEvento;
     }
 
@@ -54,6 +60,13 @@ public class Evento {
         return tipoEvento;
     }
 
+    public void setDescripcion(String descripcion){
+        this.descripcion = descripcion;
+    }
+
+    public String getDescripcion(){
+        return descripcion;
+    }
      public void setFecha(Date fecha){
         this.fecha = fecha;
     }
@@ -69,15 +82,5 @@ public class Evento {
     public String getUbicacion(){
         return ubicacion;
     }
-
-     public void setDisponibilidad(Double asientoDisponible){
-        this.asientoDisponible = asientoDisponible;
-    }
-
-    public Double getDisponibilidad(){
-        return asientoDisponible;
-    }
-
-  
 
 }

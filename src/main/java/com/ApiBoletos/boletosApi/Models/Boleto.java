@@ -1,7 +1,5 @@
 package com.ApiBoletos.boletosApi.Models;
 
-import java.sql.Date;
-
 import javax.persistence.*;
 
 @Entity
@@ -11,20 +9,28 @@ public class Boleto {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long boletoId;
-     private Double precio;
-     private Date fecha;
      private Double cantidadBoletos;
-
-     @OneToOne()
+     private Double precio;
+     private String asiento;
+   
+     //Relacion con eventos
+     @ManyToOne
+     @JoinColumn(name = "evento_Id")
      private Evento evento;
 
-     public Boleto(Double precio, Date fecha, Double cantidadBoletos, Evento evento){
-
-        this.precio = precio;
-        this.fecha = fecha;
-        this.cantidadBoletos = cantidadBoletos;
-        this.evento = evento;
+     
+     public Boleto(Double cantidadBoletos, Double precio){
+            this.cantidadBoletos = cantidadBoletos;
+            this.precio = precio;
      }
+        public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
      public Boleto(){
 
      }
@@ -37,27 +43,28 @@ public class Boleto {
         return boletoId;
     }
 
-
-     public void setPrecio(Double precio){
-        this.precio = precio;
-    }
-
-    public Double getPrecio(){
-        return precio;
-    }
-
-       public void setCantidadBoletos(Double cantidadBoletos){
+      public void setCantidadBoletos(Double cantidadBoletos){
         this.cantidadBoletos = cantidadBoletos;
     }
 
     public Double getCantidadBoletos(){
         return cantidadBoletos;
     }
-    public void setFecha(Date fecha){
-        this.fecha = fecha;
+     public void setAsientoTipo(String asiento){
+        this.asiento = asiento;
     }
 
-    public Date getFecha(){
-        return fecha;
+    public String getAsiento(){
+        return asiento;
     }
+
+      public void setPrecio(Double precio){
+        this.precio = precio;
+    }
+
+    public Double getPrecio(){
+        return precio;
+    }
+    
+
 }

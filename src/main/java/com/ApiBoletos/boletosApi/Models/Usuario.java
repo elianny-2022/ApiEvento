@@ -2,6 +2,7 @@ package com.ApiBoletos.boletosApi.Models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "Usuario")
 public class Usuario {
@@ -13,21 +14,21 @@ public class Usuario {
     private String direccion;
     private String correo;
     private String contraseña;
-    private String historial;
 
-    public Usuario(String nombre, String direccion, String correo, String contraseña, String historial){
+
+
+    public Usuario(String nombre, String direccion, String correo, String contraseña){
 
         this.nombre = nombre;
         this.correo = correo;
         this.contraseña = contraseña;
         this.direccion = direccion;
-        this.historial = historial;
     }
 
     public Usuario(){
 
     }
-
+    
     public void setUsuarioId(Long usuarioId){
         this.usuarioId = usuarioId;
     }
@@ -68,11 +69,4 @@ public class Usuario {
         return contraseña;
     }
 
-     public void setHistorial(String historial){
-        this.historial = historial;
-    }
-
-    public String getHistorial(){
-        return historial;
-    }
 }

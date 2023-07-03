@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ApiBoletos.boletosApi.Models.Boleto;
 import com.ApiBoletos.boletosApi.Services.BoletoService;
 @RestController
+@RequestMapping(path = "boletos")
 public class BoletoController {
     
      @Autowired
@@ -35,6 +37,7 @@ public class BoletoController {
             return new ResponseEntity<Boleto>(HttpStatus.NOT_FOUND);
         }
     }
+     
 
     @PostMapping("/boleto/save")
     public void saveBoleto(@RequestBody Boleto boleto){
@@ -44,7 +47,6 @@ public class BoletoController {
     @PutMapping("/boleto/update/{id}")
     public ResponseEntity<Boleto> update (@RequestBody Boleto boleto, @PathVariable Long id){
         try {
-            Boleto boletoExistente = boletoService.findById(id);
             boletoService.saveBoleto(boleto);
             return new ResponseEntity<Boleto>(HttpStatus.OK);
         } catch (Exception e) {

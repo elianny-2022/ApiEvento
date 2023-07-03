@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ApiBoletos.boletosApi.Models.Evento;
@@ -18,6 +19,7 @@ import com.ApiBoletos.boletosApi.Services.EventoService;
 
 
 @RestController
+@RequestMapping(path = "eventos")
 public class EventoController {
     
      @Autowired
@@ -46,7 +48,7 @@ public class EventoController {
     @PutMapping("/evento/update/{id}")
     public ResponseEntity<Evento> update (@RequestBody Evento evento, @PathVariable Long id){
         try {
-            Evento eventoExistente = eventoService.findById(id);
+
             eventoService.saveEvento(evento);
             return new ResponseEntity<Evento>(HttpStatus.OK);
         } catch (Exception e) {
