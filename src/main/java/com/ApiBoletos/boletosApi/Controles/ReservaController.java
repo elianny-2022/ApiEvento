@@ -9,8 +9,9 @@ import com.ApiBoletos.boletosApi.Models.Boleto;
 import com.ApiBoletos.boletosApi.Services.BoletoService;
 import com.ApiBoletos.boletosApi.Services.ReservaService;
 
+@CrossOrigin(origins = "http://localhost:5045/", maxAge = 3600)
 @RestController
-@RequestMapping(path = "/api/reservas")
+@RequestMapping(path = "reservas")
 public class ReservaController {
     private  ReservaService reservaService;
     private BoletoService boletoService;

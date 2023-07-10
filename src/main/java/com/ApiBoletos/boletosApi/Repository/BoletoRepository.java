@@ -13,7 +13,7 @@ public interface BoletoRepository extends JpaRepository<Boleto, Long>{
 
      List<Boleto> findByEvento(Evento evento);
 
-    /*  @Query("SELECT SUM(cantidad_boletos) FROM Boletos WHERE evento_id = :id")
+   /*   @Query("SELECT SUM(cantidad_boletos) FROM Boletos WHERE evento_id = :id")
     int findBoletosDisponiblesByEvento(@Param("id") Long id);
     
      @Query("SELECT SUM(b.cantidadBoletos) FROM Boleto b WHERE b.asiento = :asiento")

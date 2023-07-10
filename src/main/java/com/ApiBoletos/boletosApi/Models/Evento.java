@@ -16,6 +16,7 @@ public class Evento {
      private String tipoEvento;
      private String descripcion;
      private Date fecha;
+     private String hora;
      private String ubicacion;
 
      //Relacion con evento
@@ -24,12 +25,14 @@ public class Evento {
     
   
 
-     public Evento(String nombreEvento, Date fecha, String ubicacion, String tipoEvento, String descripcion ){
+     public Evento(String nombreEvento, Date fecha, String ubicacion, String tipoEvento,
+                     String descripcion, String hora ){
 
         this.nombreEvento = nombreEvento;
         this.descripcion = descripcion;
         this.tipoEvento = tipoEvento;
         this.fecha = fecha;
+        this.hora = hora;
         this.ubicacion = ubicacion;
         this.descripcion = descripcion;
      }
@@ -73,6 +76,13 @@ public class Evento {
 
     public Date getFecha(){
         return fecha;
+    }
+     public void setHora(String hora){
+        this.hora = hora;
+    }
+
+    public String getHora(){
+        return hora;
     }
 
      public void setUbicacion(String ubicacion){

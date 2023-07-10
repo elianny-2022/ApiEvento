@@ -30,6 +30,7 @@ public class BoletoService {
         return boletoRepository.findById(id).get();
     }
     
+    
     public void delete(Long id){
         boletoRepository.deleteById(id);
     }
